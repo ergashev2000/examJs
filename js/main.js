@@ -5,19 +5,23 @@ function createPokemon(pokemon) {
     colEl.className = 'col-6 col-lg-3 col-md-6 col-sm-6 ';
 
     let cardEl = document.createElement('div');
-    cardEl.className = 'card'; 
+    cardEl.className = 'card';
 
     let cardImg = document.createElement('img');
     cardImg.setAttribute('src', pokemon.img);
-    cardImg.className = 'px-5 pt-3';
+    cardImg.className = 'px-5 pt-3 img';
 
     let cardHeader = document.createElement('div')
-    cardHeader.className = 'h3 text-center pt-1';
+    cardHeader.className = 'h3 text-center pt-1 ';
+
+    let like = document.createElement('i')
+    like.className = 'fa-regular fa-heart like text-end  ';
 
     let cardBody = document.createElement('div')
     cardBody.className = 'card-body ';
 
     let cardTitle = document.createElement('h5');
+    cardTitle.className = 'title';
     cardTitle.textContent = pokemon.name;
 
     let cardDescription = document.createElement('h5');
@@ -36,6 +40,7 @@ function createPokemon(pokemon) {
     cardEl.appendChild(cardImg);
     cardEl.appendChild(cardBody);
     cardBody.appendChild(cardTitle);
+    cardBody.appendChild(like);
     cardBody.appendChild(cardDescription);
     cardDescription.appendChild(numbers);
     numbers.appendChild(weight);
@@ -44,6 +49,7 @@ function createPokemon(pokemon) {
 
     return colEl
 }
+
 
 render(pokemons)
 
@@ -55,22 +61,22 @@ function render(pokemon) {
     }
 }
 
-
-
-
-
 //Filter
 function filterBtn() {
     let minWeight = document.querySelector('#min_weight').value - 0;
     let maxWeight = document.querySelector('#max_weight').value - 0;
     let search = document.querySelector('#search').value;
+
     if (minWeight > 0 && maxWeight > 0) pokemonList.innerHTML = null;
+
     for (let i = 0; i < pokemons.length; i++) {
         let value = pokemons[i].weight.split(' ');
+
         if (value[0] > minWeight && value[0] < maxWeight) {
             let singleEl = createPokemon(pokemons[i]);
             pokemonList.appendChild(singleEl);
         }
+
         if (search.toLowerCase() == pokemons[i].name.toLowerCase()) {
             pokemonList.innerHTML = null;
             let singleEl = createPokemon(pokemons[i]);
@@ -78,8 +84,10 @@ function filterBtn() {
             break;
         }
     }
-
-
-
-
 }
+
+//Like
+let likeBtn = document.querySelector('.like');
+likeBtn.addEventListener('click', () => {
+    likeBtn.classList.toggle('fa-solid');
+})

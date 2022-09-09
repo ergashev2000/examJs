@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:wght@600&display=swap');
+*{
+    font-family: 'Cabin', sans-serif;
+}
 body{
     background-color: #FFD845;
     width: 100%;
@@ -5,9 +9,11 @@ body{
 .description{
     font-size: 15px;
 }
-.filter_btn{
+
+.img, .filter_btn, .title, .like{
     cursor: pointer;
 }
-.card{
-    cursor: pointer;
+.like{
+    font-size: 20px;
+    float: right;
 }
