@@ -1,0 +1,13 @@
+body{
+    background-color: #FFD845;
+    width: 100%;
+}
+.description{
+    font-size: 15px;
+}
+.filter_btn{
+    cursor: pointer;
+}
+.card{
+    cursor: pointer;
+}
